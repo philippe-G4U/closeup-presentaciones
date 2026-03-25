@@ -45,8 +45,7 @@
         @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; } html { scroll-behavior: auto; } }
 
         .slide-header { display: flex; justify-content: space-between; align-items: center; padding: clamp(0.8rem, 1.5vh, 1.5rem) var(--slide-padding); flex-shrink: 0; }
-        .logo-text { font-size: clamp(0.9rem, 1.5vw, 1.3rem); font-weight: 700; color: var(--teal-primary); letter-spacing: -0.02em; }
-        .logo-text span { font-weight: 300; color: var(--gray-dark); }
+        .logo-img { height: clamp(1.8rem, 3.5vw, 2.8rem); width: auto; object-fit: contain; }
         .slide-nav { display: flex; gap: clamp(0.5rem, 1.2vw, 1.2rem); font-size: clamp(0.5rem, 0.7vw, 0.65rem); color: var(--gray-mid); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 500; }
         .slide-nav .active { color: var(--teal-primary); font-weight: 700; }
         .teal-line { height: 3px; background: linear-gradient(90deg, var(--teal-primary), var(--teal-primary) 30%, transparent); flex-shrink: 0; }
@@ -134,8 +133,8 @@
     </div>
     <div class="content-horizontal">
         <div class="text-side">
+            <img src="logo-farmaerp.png" alt="Farma eRP" class="reveal" style="height:clamp(3rem,6vw,5rem); filter:brightness(0) invert(1); margin-bottom:clamp(0.5rem,1vh,1rem);">
             <div class="section-label reveal" style="background:rgba(255,255,255,0.15);">Programas de Pacientes</div>
-            <h1 class="reveal">Farma eRP</h1>
             <p class="reveal" style="color:rgba(255,255,255,0.7); max-width:500px; font-weight:300; font-size:clamp(0.8rem,1.3vw,1.1rem);">Contribuimos a que los pacientes a quienes se les indic&oacute; medicamentos de especialidad inicien oportunamente su tratamiento y mantengan la adherencia.</p>
         </div>
         <div class="accent-card reveal-scale" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.1);">
@@ -150,7 +149,7 @@
 
 <!-- SLIDE 2: QUIÉNES SOMOS -->
 <section class="slide" data-nav="Qui&eacute;nes Somos">
-    <div class="slide-header"><div class="logo-text">Farma eRP</div><div class="slide-nav"><span class="active">Institucional</span><span>Servicios</span><span>Calidad</span><span>Equipo</span></div></div>
+    <div class="slide-header"><img src="logo-farmaerp.png" alt="Farma eRP" class="logo-img"><div class="slide-nav"><span class="active">Institucional</span><span>Servicios</span><span>Calidad</span><span>Equipo</span></div></div>
     <div class="content-horizontal">
         <div class="text-side">
             <div class="section-label reveal">Qui&eacute;nes Somos</div>
@@ -177,7 +176,7 @@
 
 <!-- SLIDE 3: MODELO VÍNCULOS -->
 <section class="slide" data-nav="Modelo">
-    <div class="slide-header"><div class="logo-text">Farma eRP</div><div class="slide-nav"><span class="active">Institucional</span><span>Servicios</span><span>Calidad</span><span>Equipo</span></div></div>
+    <div class="slide-header"><img src="logo-farmaerp.png" alt="Farma eRP" class="logo-img"><div class="slide-nav"><span class="active">Institucional</span><span>Servicios</span><span>Calidad</span><span>Equipo</span></div></div>
     <div class="slide-content" style="padding-top:0;">
         <div class="section-label reveal">Modelo V&iacute;nculos</div>
         <h2 class="reveal">Intervenci&oacute;n en salud <em>integrada y personalizada</em></h2>
@@ -203,7 +202,7 @@
 
 <!-- SLIDE 4: SERVICIOS -->
 <section class="slide" data-nav="Servicios">
-    <div class="slide-header"><div class="logo-text">Farma eRP</div><div class="slide-nav"><span>Institucional</span><span class="active">Servicios</span><span>Calidad</span><span>Equipo</span></div></div>
+    <div class="slide-header"><img src="logo-farmaerp.png" alt="Farma eRP" class="logo-img"><div class="slide-nav"><span>Institucional</span><span class="active">Servicios</span><span>Calidad</span><span>Equipo</span></div></div>
     <div class="slide-content" style="padding-top:0;">
         <div class="section-label reveal">&Aacute;reas de Servicio</div>
         <h2 class="reveal">Servicios integrales de <em>gesti&oacute;n de pacientes</em></h2>
@@ -221,7 +220,7 @@
 
 <!-- SLIDE 5: SERVICIOS COMPLEMENTARIOS -->
 <section class="slide" data-nav="Convenios">
-    <div class="slide-header"><div class="logo-text">Farma eRP</div><div class="slide-nav"><span>Institucional</span><span class="active">Servicios</span><span>Calidad</span><span>Equipo</span></div></div>
+    <div class="slide-header"><img src="logo-farmaerp.png" alt="Farma eRP" class="logo-img"><div class="slide-nav"><span>Institucional</span><span class="active">Servicios</span><span>Calidad</span><span>Equipo</span></div></div>
     <div class="slide-content" style="padding-top:0;">
         <div class="two-col">
             <div>
@@ -261,7 +260,7 @@
 
 <!-- SLIDE 6: SEGURIDAD & REPORTES -->
 <section class="slide" data-nav="Seguridad">
-    <div class="slide-header"><div class="logo-text">Farma eRP</div><div class="slide-nav"><span>Institucional</span><span>Servicios</span><span class="active">Calidad</span><span>Equipo</span></div></div>
+    <div class="slide-header"><img src="logo-farmaerp.png" alt="Farma eRP" class="logo-img"><div class="slide-nav"><span>Institucional</span><span>Servicios</span><span class="active">Calidad</span><span>Equipo</span></div></div>
     <div class="slide-content" style="padding-top:0;">
         <div class="two-col">
             <div>
@@ -299,7 +298,7 @@
 
 <!-- SLIDE 7: EQUIPO -->
 <section class="slide" data-nav="Equipo">
-    <div class="slide-header"><div class="logo-text">Farma eRP</div><div class="slide-nav"><span>Institucional</span><span>Servicios</span><span>Calidad</span><span class="active">Equipo</span></div></div>
+    <div class="slide-header"><img src="logo-farmaerp.png" alt="Farma eRP" class="logo-img"><div class="slide-nav"><span>Institucional</span><span>Servicios</span><span>Calidad</span><span class="active">Equipo</span></div></div>
     <div class="slide-content" style="padding-top:0;">
         <div class="section-label reveal">Nuestro Equipo</div>
         <h2 class="reveal">Estructura de <em>50+ profesionales</em></h2>
@@ -339,6 +338,7 @@
         <div class="slide-nav" style="color:rgba(255,255,255,0.5);"><span>Empresa del Grupo Close-Up</span></div>
     </div>
     <div class="slide-content" style="align-items:center; text-align:center;">
+        <img src="logo-farmaerp.png" alt="Farma eRP" class="reveal" style="height:clamp(3rem,6vw,5rem); filter:brightness(0) invert(1); margin-bottom:clamp(0.5rem,1.5vh,1.5rem);">
         <h1 class="reveal" style="font-size:var(--title-size); color:white;">Gracias</h1>
         <p class="reveal" style="color:rgba(255,255,255,0.7); font-size:clamp(0.9rem,1.5vw,1.2rem); max-width:600px; margin-bottom:clamp(1rem,2vh,2rem);">Nuestro prop&oacute;sito es ayudar a los pacientes a acceder a sus medicamentos.</p>
         <div class="reveal" style="text-align:center;">
