@@ -1,0 +1,1751 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Close-Up International Argentina — Presentación Corporativa 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===========================================
+           CSS CUSTOM PROPERTIES — CLOSE-UP BRAND
+           =========================================== */
+        :root {
+            --red-primary: #D82735;
+            --red-dark: #BA2025;
+            --red-deeper: #9E1B24;
+            --gray-dark: #575B5C;
+            --gray-mid: #888888;
+            --gray-light: #D2D4D4;
+            --gray-bg: #F5F5F5;
+            --white: #FFFFFF;
+            --off-white: #FAFAFA;
+            --black: #1A1A1A;
+
+            --font-main: 'Montserrat', sans-serif;
+            --title-size: clamp(1.8rem, 4.5vw, 3.8rem);
+            --h2-size: clamp(1.4rem, 3.5vw, 2.8rem);
+            --h3-size: clamp(1rem, 2vw, 1.5rem);
+            --body-size: clamp(0.7rem, 1.2vw, 1rem);
+            --small-size: clamp(0.6rem, 0.9vw, 0.8rem);
+            --slide-padding: clamp(1.5rem, 4vw, 5rem);
+            --content-gap: clamp(0.5rem, 1.5vw, 1.5rem);
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ===========================================
+           VIEWPORT FITTING: MANDATORY BASE STYLES
+           =========================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+            font-family: var(--font-main);
+            background: var(--black);
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            background: var(--off-white);
+        }
+
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-height: 100%;
+            overflow: hidden;
+            padding: var(--slide-padding);
+        }
+
+        img {
+            max-width: 100%;
+            max-height: min(50vh, 400px);
+            object-fit: contain;
+        }
+
+        /* ===========================================
+           RESPONSIVE BREAKPOINTS
+           =========================================== */
+        @media (max-height: 700px) {
+            :root {
+                --slide-padding: clamp(0.75rem, 3vw, 2rem);
+                --content-gap: clamp(0.4rem, 1.5vw, 1rem);
+                --title-size: clamp(1.4rem, 4vw, 2.5rem);
+                --h2-size: clamp(1.1rem, 3vw, 2rem);
+            }
+        }
+
+        @media (max-height: 600px) {
+            :root {
+                --slide-padding: clamp(0.5rem, 2.5vw, 1.5rem);
+                --content-gap: clamp(0.3rem, 1vw, 0.75rem);
+                --title-size: clamp(1.2rem, 3.5vw, 2rem);
+                --body-size: clamp(0.65rem, 1vw, 0.9rem);
+            }
+            .nav-dots, .keyboard-hint, .decorative { display: none; }
+        }
+
+        @media (max-height: 500px) {
+            :root {
+                --slide-padding: clamp(0.4rem, 2vw, 1rem);
+                --title-size: clamp(1rem, 3vw, 1.5rem);
+                --h2-size: clamp(0.9rem, 2.5vw, 1.25rem);
+                --body-size: clamp(0.6rem, 0.9vw, 0.8rem);
+            }
+        }
+
+        @media (max-width: 600px) {
+            :root { --title-size: clamp(1.25rem, 7vw, 2.5rem); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.2s !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+
+        /* ===========================================
+           SLIDE HEADER & FOOTER (Consistent across slides)
+           =========================================== */
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: clamp(0.8rem, 1.5vh, 1.5rem) var(--slide-padding);
+            flex-shrink: 0;
+        }
+
+        .logo-text {
+            font-size: clamp(0.9rem, 1.5vw, 1.3rem);
+            font-weight: 700;
+            color: var(--red-primary);
+            letter-spacing: -0.02em;
+        }
+        .logo-text span {
+            font-weight: 300;
+            color: var(--gray-dark);
+        }
+
+        .slide-nav {
+            display: flex;
+            gap: clamp(0.5rem, 1.2vw, 1.2rem);
+            font-size: clamp(0.5rem, 0.7vw, 0.65rem);
+            color: var(--gray-mid);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 500;
+        }
+        .slide-nav .active { color: var(--red-primary); font-weight: 700; }
+
+        .red-line {
+            height: 3px;
+            background: linear-gradient(90deg, var(--red-primary), var(--red-primary) 30%, transparent);
+            flex-shrink: 0;
+        }
+
+        .slide-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: clamp(0.4rem, 0.8vh, 0.8rem) var(--slide-padding);
+            font-size: clamp(0.5rem, 0.65vw, 0.6rem);
+            color: var(--gray-light);
+            flex-shrink: 0;
+        }
+
+        /* ===========================================
+           SECTION LABEL (Red tag)
+           =========================================== */
+        .section-label {
+            display: inline-block;
+            background: var(--red-primary);
+            color: white;
+            font-size: clamp(0.5rem, 0.7vw, 0.65rem);
+            font-weight: 600;
+            padding: 0.3em 1em;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: clamp(0.4rem, 1vh, 1rem);
+        }
+
+        /* ===========================================
+           TYPOGRAPHY
+           =========================================== */
+        .slide h1 {
+            font-size: var(--title-size);
+            font-weight: 800;
+            color: var(--gray-dark);
+            line-height: 1.08;
+            margin-bottom: clamp(0.5rem, 1.2vh, 1.2rem);
+        }
+        .slide h1 em { font-style: normal; color: var(--red-primary); }
+
+        .slide h2 {
+            font-size: var(--h2-size);
+            font-weight: 700;
+            color: var(--gray-dark);
+            line-height: 1.1;
+            margin-bottom: clamp(0.4rem, 1vh, 1rem);
+        }
+        .slide h2 em { font-style: normal; color: var(--red-primary); }
+
+        .slide h3 {
+            font-size: var(--h3-size);
+            font-weight: 600;
+            color: var(--gray-dark);
+            margin-bottom: clamp(0.3rem, 0.8vh, 0.8rem);
+        }
+
+        .slide p, .slide li {
+            font-size: var(--body-size);
+            color: var(--gray-dark);
+            line-height: 1.55;
+            font-weight: 300;
+        }
+
+        .slide ul {
+            list-style: none;
+            padding: 0;
+        }
+        .slide ul li {
+            padding-left: 1.2em;
+            position: relative;
+            margin-bottom: clamp(0.2rem, 0.5vh, 0.5rem);
+        }
+        .slide ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.55em;
+            width: 6px;
+            height: 6px;
+            background: var(--red-primary);
+            border-radius: 50%;
+        }
+
+        /* ===========================================
+           LAYOUT HELPERS
+           =========================================== */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(1rem, 3vw, 3rem);
+            align-items: start;
+        }
+        @media (max-width: 768px) {
+            .two-col { grid-template-columns: 1fr; }
+        }
+
+        .three-col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(0.8rem, 2vw, 2rem);
+        }
+        @media (max-width: 768px) {
+            .three-col { grid-template-columns: 1fr; }
+        }
+
+        .four-col {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: clamp(0.6rem, 1.5vw, 1.5rem);
+        }
+        @media (max-width: 900px) {
+            .four-col { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* ===========================================
+           CARDS
+           =========================================== */
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: clamp(0.8rem, 1.5vw, 1.5rem);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .card-red {
+            background: linear-gradient(135deg, var(--red-primary) 0%, var(--red-dark) 100%);
+            color: white;
+            border-radius: 12px;
+            padding: clamp(1rem, 2vw, 2rem);
+            position: relative;
+            overflow: hidden;
+        }
+        .card-red::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -20%;
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .card-red h3, .card-red p, .card-red li { color: white; }
+        .card-red li::before { background: white; }
+
+        .stat-number {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: clamp(0.55rem, 0.8vw, 0.75rem);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 400;
+            margin-top: 0.3rem;
+            opacity: 0.7;
+        }
+
+        /* ===========================================
+           ACCENT CARD (big right-side card)
+           =========================================== */
+        .accent-card {
+            flex: 0 0 clamp(180px, 22vw, 320px);
+            height: clamp(200px, 35vh, 360px);
+            background: linear-gradient(135deg, var(--red-primary) 0%, var(--red-dark) 100%);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: clamp(1.2rem, 2vw, 2rem);
+            position: relative;
+            overflow: hidden;
+        }
+        .accent-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .accent-card .stat-number { color: white; }
+        .accent-card .stat-label { color: rgba(255,255,255,0.8); }
+
+        /* ===========================================
+           HORIZONTAL CONTENT (text + side card)
+           =========================================== */
+        .content-horizontal {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 0 var(--slide-padding);
+            gap: clamp(1.5rem, 3vw, 4rem);
+            overflow: hidden;
+        }
+        .content-horizontal .text-side { flex: 1; min-width: 0; }
+
+        /* ===========================================
+           TIMELINE
+           =========================================== */
+        .timeline {
+            display: flex;
+            gap: clamp(0.3rem, 0.8vw, 0.8rem);
+            position: relative;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: clamp(1rem, 2vh, 1.8rem);
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gray-light);
+        }
+        .timeline-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        .timeline-year {
+            display: inline-block;
+            background: var(--red-primary);
+            color: white;
+            font-size: clamp(0.55rem, 0.7vw, 0.7rem);
+            font-weight: 700;
+            padding: 0.3em 0.8em;
+            border-radius: 20px;
+            margin-bottom: clamp(0.3rem, 0.6vh, 0.6rem);
+            position: relative;
+            z-index: 1;
+        }
+        .timeline-text {
+            font-size: clamp(0.55rem, 0.75vw, 0.7rem);
+            color: var(--gray-dark);
+            font-weight: 300;
+            line-height: 1.4;
+        }
+
+        /* ===========================================
+           TABLE
+           =========================================== */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: clamp(0.6rem, 0.85vw, 0.8rem);
+        }
+        .data-table th {
+            background: var(--red-primary);
+            color: white;
+            padding: clamp(0.3rem, 0.6vh, 0.6rem) clamp(0.5rem, 1vw, 1rem);
+            text-align: left;
+            font-weight: 600;
+            font-size: clamp(0.55rem, 0.75vw, 0.7rem);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .data-table td {
+            padding: clamp(0.25rem, 0.5vh, 0.5rem) clamp(0.5rem, 1vw, 1rem);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            color: var(--gray-dark);
+            font-weight: 300;
+        }
+        .data-table tr:nth-child(even) td { background: rgba(0,0,0,0.015); }
+
+        /* ===========================================
+           FLOW DIAGRAM (CSS only)
+           =========================================== */
+        .flow-row {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.3rem, 0.8vw, 0.8rem);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .flow-box {
+            background: var(--white);
+            border: 2px solid var(--gray-light);
+            border-radius: 8px;
+            padding: clamp(0.4rem, 0.8vw, 0.8rem) clamp(0.6rem, 1.2vw, 1.2rem);
+            font-size: clamp(0.55rem, 0.8vw, 0.75rem);
+            font-weight: 500;
+            color: var(--gray-dark);
+            text-align: center;
+        }
+        .flow-box.red {
+            background: var(--red-primary);
+            border-color: var(--red-primary);
+            color: white;
+            font-weight: 600;
+        }
+        .flow-arrow {
+            font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+            color: var(--red-primary);
+            font-weight: 700;
+        }
+
+        /* ===========================================
+           QUALITY BADGES
+           =========================================== */
+        .badge-row {
+            display: flex;
+            gap: clamp(0.5rem, 1.2vw, 1.2rem);
+            flex-wrap: wrap;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4em;
+            background: var(--white);
+            border: 1px solid var(--gray-light);
+            border-radius: 6px;
+            padding: clamp(0.3rem, 0.5vh, 0.5rem) clamp(0.6rem, 1vw, 1rem);
+            font-size: clamp(0.55rem, 0.75vw, 0.7rem);
+            font-weight: 500;
+            color: var(--gray-dark);
+        }
+        .badge .icon {
+            width: clamp(14px, 1.5vw, 20px);
+            height: clamp(14px, 1.5vw, 20px);
+            background: var(--red-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: clamp(0.5rem, 0.7vw, 0.6rem);
+        }
+
+        /* ===========================================
+           ANIMATIONS (Intersection Observer driven)
+           =========================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.6s var(--ease-out-expo), transform 0.6s var(--ease-out-expo);
+        }
+        .slide.visible .reveal { opacity: 1; transform: translateY(0); }
+        .slide.visible .reveal:nth-child(2) { transition-delay: 0.1s; }
+        .slide.visible .reveal:nth-child(3) { transition-delay: 0.2s; }
+        .slide.visible .reveal:nth-child(4) { transition-delay: 0.3s; }
+        .slide.visible .reveal:nth-child(5) { transition-delay: 0.4s; }
+        .slide.visible .reveal:nth-child(6) { transition-delay: 0.5s; }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.6s var(--ease-out-expo), transform 0.6s var(--ease-out-expo);
+        }
+        .slide.visible .reveal-left { opacity: 1; transform: translateX(0); }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.92);
+            transition: opacity 0.6s var(--ease-out-expo), transform 0.6s var(--ease-out-expo);
+        }
+        .slide.visible .reveal-scale { opacity: 1; transform: scale(1); }
+
+        /* ===========================================
+           COVER SLIDE (Special)
+           =========================================== */
+        .slide.cover {
+            background: linear-gradient(135deg, var(--red-primary) 0%, var(--red-dark) 60%, var(--red-deeper) 100%);
+        }
+        .slide.cover::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle 2px at center, rgba(255,255,255,0.05) 0%, transparent 2px);
+            background-size: 24px 24px;
+            pointer-events: none;
+        }
+        .slide.cover::after {
+            content: '';
+            position: absolute;
+            top: 10%;
+            right: -10%;
+            width: 60%;
+            height: 80%;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.05);
+            pointer-events: none;
+        }
+        .slide.cover h1, .slide.cover h2, .slide.cover p { color: white; }
+        .slide.cover h1 em { color: rgba(255,255,255,0.6); }
+
+        /* ===========================================
+           SECTION DIVIDER SLIDE
+           =========================================== */
+        .slide.divider {
+            background: var(--black);
+        }
+        .slide.divider .slide-content {
+            align-items: center;
+            text-align: center;
+        }
+        .slide.divider h2 { color: white; font-size: var(--title-size); }
+        .slide.divider h2 em { color: var(--red-primary); }
+        .slide.divider p { color: var(--gray-mid); max-width: 600px; }
+        .slide.divider .section-label { margin-bottom: clamp(0.5rem, 1.5vh, 1.5rem); }
+
+        /* ===========================================
+           PROGRESS BAR
+           =========================================== */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--red-primary);
+            z-index: 1000;
+            transition: width 0.3s;
+            width: 0%;
+        }
+
+        /* ===========================================
+           NAV DOTS
+           =========================================== */
+        .nav-dots {
+            position: fixed;
+            right: clamp(0.5rem, 1.5vw, 1.5rem);
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 100;
+        }
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gray-light);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            padding: 0;
+        }
+        .nav-dot.active {
+            background: var(--red-primary);
+            transform: scale(1.3);
+        }
+        .nav-dot:hover { background: var(--red-dark); }
+
+        /* ===========================================
+           KEYBOARD HINT
+           =========================================== */
+        .keyboard-hint {
+            position: fixed;
+            bottom: clamp(0.5rem, 1.5vh, 1.5rem);
+            right: clamp(0.5rem, 1.5vw, 1.5rem);
+            font-size: clamp(0.5rem, 0.6vw, 0.55rem);
+            color: var(--gray-mid);
+            z-index: 100;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Nav Dots (generated by JS) -->
+<nav class="nav-dots" id="navDots"></nav>
+
+<!-- Keyboard Hint -->
+<div class="keyboard-hint decorative">&#8593;&#8595; / Space para navegar</div>
+
+
+<!-- =============================================
+     SLIDE 1: PORTADA
+     ============================================= -->
+<section class="slide cover" data-nav="Inicio">
+    <div class="slide-header" style="padding-top:clamp(1.5rem,3vh,3rem);">
+        <div class="logo-text" style="color:white;">Close-Up <span style="color:rgba(255,255,255,0.6);">International</span></div>
+        <div class="slide-nav" style="color:rgba(255,255,255,0.5);"><span>Argentina 2026</span></div>
+    </div>
+    <div class="content-horizontal">
+        <div class="text-side">
+            <div class="section-label reveal" style="background:rgba(255,255,255,0.15);">Presentaci&oacute;n Corporativa</div>
+            <h1 class="reveal" style="font-size:var(--title-size);">Su partner<br>estrat&eacute;gico en<br><em>inteligencia farmac&eacute;utica</em></h1>
+            <p class="reveal" style="color:rgba(255,255,255,0.7); max-width:500px; font-weight:300;">Datos confiables, consultor&iacute;a especializada y tecnolog&iacute;a de vanguardia para la toma de decisiones de su laboratorio.</p>
+        </div>
+        <div class="accent-card reveal-scale" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.1);">
+            <div class="stat-number" style="color:white;">56</div>
+            <div class="stat-label" style="color:rgba(255,255,255,0.6);">a&ntilde;os liderando la<br>industria farmac&eacute;utica</div>
+        </div>
+    </div>
+    <div style="height:3px; background:rgba(255,255,255,0.1);"></div>
+    <div class="slide-footer" style="color:rgba(255,255,255,0.3);">
+        <span>&copy; Close-Up International 2026</span>
+        <span>Confidencial</span>
+    </div>
+</section>
+
+
+<!-- =============================================
+     SLIDE 2: QUIÉNES SOMOS
+     ============================================= -->
+<section class="slide" data-nav="Qui&eacute;nes Somos">
+    <div class="slide-header">
+        <div class="logo-text">Close-Up <span>International</span></div>
+        <div class="slide-nav"><span class="active">Institucional</span><span>Datos</span><span>Consultor&iacute;a</span><span>Tecnolog&iacute;a</span><span>PSP</span></div>
+    </div>
+    <div class="content-horizontal">
+        <div class="text-side">
+            <div class="section-label reveal">Qui&eacute;nes Somos</div>
+            <h1 class="reveal">L&iacute;deres en informaci&oacute;n<br>para la <em>Industria Farmac&eacute;utica</em></h1>
+            <p class="reveal" style="max-width:520px; margin-bottom:clamp(0.8rem,1.5vh,1.5rem);">Con <strong style="font-weight:600;">56 a&ntilde;os de trayectoria</strong>, Close-Up International es la empresa de referencia en auditor&iacute;as de prescripciones y ventas, consultor&iacute;a estrat&eacute;gica y soluciones tecnol&oacute;gicas para laboratorios farmac&eacute;uticos en Latinoam&eacute;rica.</p>
+            <p class="reveal" style="max-width:520px;">Operamos en <strong style="font-weight:600;">9 pa&iacute;ses + Centro Am&eacute;rica</strong>, con un alcance del 94% de cobertura LATAM. Nuestra informaci&oacute;n es la base sobre la cual los laboratorios l&iacute;deres toman decisiones estrat&eacute;gicas de marketing, ventas y promoci&oacute;n m&eacute;dica.</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:clamp(0.6rem,1.2vh,1.2rem);">
+            <div class="card-red reveal-scale" style="padding:clamp(1rem,1.5vw,1.5rem);">
+                <div class="stat-number" style="color:white;">+750</div>
+                <div class="stat-label" style="color:rgba(255,255,255,0.7);">Clientes en Datos</div>
+            </div>
+            <div class="card-red reveal-scale" style="padding:clamp(1rem,1.5vw,1.5rem); transition-delay:0.15s;">
+                <div class="stat-number" style="color:white;">+120</div>
+                <div class="stat-label" style="color:rgba(255,255,255,0.7);">Clientes en Consultor&iacute;a</div>
+            </div>
+            <div class="card-red reveal-scale" style="padding:clamp(1rem,1.5vw,1.5rem); transition-delay:0.3s;">
+                <div class="stat-number" style="color:white;">+350</div>
+                <div class="stat-label" style="color:rgba(255,255,255,0.7);">Clientes en Tecnolog&iacute;a</div>
+            </div>
+        </div>
+    </div>
+    <div class="red-line"></div>
+    <div class="slide-footer"><span>&copy; Close-Up International 2026</span><span>02</span></div>
+</section>
+
+
+<!-- =============================================
+     SLIDE 3: MISIÓN, VISIÓN & VALORES
+     ============================================= -->
+<section class="slide" data-nav="Misi&oacute;n">
+    <div class="slide-header">
+        <div class="logo-text">Close-Up <span>International</span></div>
+        <div class="slide-nav"><span class="active">Institucional</span><span>Datos</span><span>Consultor&iacute;a</span><span>Tecnolog&iacute;a</span><span>PSP</span></div>
+    </div>
+    <div class="slide-content" style="padding-top:0;">
+        <div class="section-label reveal">Misi&oacute;n, Visi&oacute;n &amp; Valores</div>
+        <div class="two-col" style="align-items:start;">
+            <div>
+                <h3 class="reveal" style="margin-bottom:clamp(0.3rem,0.6vh,0.6rem);">Nuestra Misi&oacute;n</h3>
+                <p class="reveal" style="margin-bottom:clamp(0.8rem,1.5vh,1.5rem); font-style:italic; font-weight:400;">&ldquo;Prestar servicios confiables y de alta tecnolog&iacute;a a la Industria Farmac&eacute;utica, que le orienten y creen valor a las actividades de promoci&oacute;n e informaci&oacute;n de los productos medicinales al cuerpo m&eacute;dico.&rdquo;</p>
+                <h3 class="reveal" style="margin-bottom:clamp(0.3rem,0.6vh,0.6rem);">Nuestra Visi&oacute;n</h3>
+                <ul class="reveal">
+                    <li>Ser un modelo de empresa argentina de expansi&oacute;n internacional</li>
+                    <li>Personal calificado y motivado, trabajando en equipo</li>
+                    <li>Liderar el mercado con innovaci&oacute;n y creatividad</li>
+                    <li>Servicios confiables para satisfacer al cliente</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="reveal" style="margin-bottom:clamp(0.5rem,1vh,1rem);">Nuestros Valores</h3>
+                <div style="display:flex; flex-direction:column; gap:clamp(0.4rem,0.8vh,0.8rem);">
+                    <div class="card reveal" style="padding:clamp(0.5rem,1vw,1rem);">
+                        <h3 style="font-size:var(--body-size); color:var(--red-primary); margin-bottom:0.2rem;">Clientes</h3>
+                        <p style="font-size:var(--small-size);">Comprometidos con servicios confiables para satisfacer al cliente.</p>
+                    </div>
+                    <div class="card reveal" style="padding:clamp(0.5rem,1vw,1rem);">
+                        <h3 style="font-size:var(--body-size); color:var(--red-primary); margin-bottom:0.2rem;">&Eacute;tica</h3>
+                        <p style="font-size:var(--small-size);">En decisiones estrat&eacute;gicas, relaciones comerciales y trato con la gente.</p>
+                    </div>
+                    <div class="card reveal" style="padding:clamp(0.5rem,1vw,1rem);">
+                        <h3 style="font-size:var(--body-size); color:var(--red-primary); margin-bottom:0.2rem;">Personal</h3>
+                        <p style="font-size:var(--small-size);">Trabajo en equipo, desarrollo profesional y personal.</p>
+                    </div>
+                    <div class="card reveal" style="padding:clamp(0.5rem,1vw,1rem);">
+                        <h3 style="font-size:var(--body-size); color:var(--red-primary); margin-bottom:0.2rem;">Comunidad</h3>
+                        <p style="font-size:var(--small-size);">Compromiso con la difusi&oacute;n de valores y acciones solidarias.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="red-line"></div>
+    <div class="slide-footer"><span>&copy; Close-Up International 2026</span><span>03</span></div>
+</section>
+
+
+<!-- =============================================
+     SLIDE 4: CALIDAD INTERNACIONAL
+     ============================================= -->
+<section class="slide" data-nav="Calidad">
+    <div class="slide-header">
+        <div class="logo-text">Close-Up <span>International</span></div>
+        <div class="slide-nav"><span class="active">Institucional</span><span>Datos</span><span>Consultor&iacute;a</span><span>Tecnolog&iacute;a</span><span>PSP</span></div>
+    </div>
+    <div class="slide-content" style="padding-top:0;">
+        <div class="section-label reveal">Calidad Internacional</div>
+        <h2 class="reveal">Informaci&oacute;n que sustenta <em>decisiones cr&iacute;ticas</em></h2>
+        <div class="three-col" style="margin-top:clamp(0.5rem,1.2vh,1.2rem);">
+            <div class="card reveal" style="border-top:3px solid var(--red-primary);">
+                <h3 style="font-size:var(--body-size); color:var(--red-primary); margin-bottom:0.4rem;">Confiable &amp; &Iacute;ntegra</h3>
+                <p style="font-size:var(--small-size);">Basada en dise&ntilde;o muestral que garantiza representatividad. Los datos NO se proyectan: se preserva la coherencia y seguridad como principio y m&eacute;todo.</p>
+            </div>
+            <div class="card reveal" style="border-top:3px solid var(--red-primary);">
+                <h3 style="font-size:var(--body-size); color:var(--red-primary); margin-bottom:0.4rem;">Verificada &amp; Certificada</h3>
+                <p style="font-size:var(--small-size);">Procedimientos que aseguran la calidad. Certificaciones peri&oacute;dicas con consultor&iacute;as internacionales de primer nivel. <strong style="font-weight:600;">ISO 9001 e ISO 27.001.</strong></p>
+            </div>
+            <div class="card reveal" style="border-top:3px solid var(--red-primary);">
+                <h3 style="font-size:var(--body-size); color:var(--red-primary); margin-bottom:0.4rem;">Oportuna &amp; Documentada</h3>
+                <p style="font-size:var(--small-size);">Datos validados y documentados, entregados en tiempo para la toma de decisiones. Datos incuestionables respaldados por procesos auditados.</p>
+            </div>
+        </div>
+        <div class="badge-row reveal" style="margin-top:clamp(0.6rem,1.2vh,1.2rem);">
+            <div class="badge"><div class="icon">&#10003;</div>Certificaci&oacute;n PricewaterhouseCoopers</div>
+            <div class="badge"><div class="icon">&#10003;</div>ISO 9001 &amp; ISO 27.001</div>
+            <div class="badge"><div class="icon">&#10003;</div>Continuous Improvement Award</div>
+            <div class="badge"><div class="icon">&#10003;</div>Malcolm Baldridge Standards</div>
+        </div>
+        <p class="reveal" style="margin-top:clamp(0.4rem,0.8vh,0.8rem); font-size:var(--small-size); color:var(--gray-mid);">PwC eval&uacute;a anualmente la calidad de nuestros servicios, metodolog&iacute;as, procesos, sistemas de informaci&oacute;n y cantidad de prescripciones de nuestro Banco de Datos.</p>
+    </div>
+    <div class="red-line"></div>
+    <div class="slide-footer"><span>&copy; Close-Up International 2026</span><span>04</span></div>
+</section>
+
+
+<!-- =============================================
+     SLIDE 5: ECOSISTEMA DE SERVICIOS
+     ============================================= -->
+<section class="slide" data-nav="Servicios">
+    <div class="slide-header">
+        <div class="logo-text">Close-Up <span>International</span></div>
+        <div class="slide-nav"><span class="active">Institucional</span><span>Datos</span><span>Consultor&iacute;a</span><span>Tecnolog&iacute;a</span><span>PSP</span></div>
+    </div>
+    <div class="slide-content" style="padding-top:0;">
+        <div class="section-label reveal">Ecosistema de Servicios</div>
+        <h2 class="reveal">Unidades de negocio <em>integradas</em></h2>
+        <p class="reveal" style="max-width:700px; margin-bottom:clamp(0.6rem,1.2vh,1.2rem);">Tres pilares interconectados que le permiten a su laboratorio tener una visi&oacute;n 360&deg; del mercado farmac&eacute;utico, desde el dato crudo hasta la acci&oacute;n comercial.</p>
+        <div class="three-col" style="margin-top:clamp(0.3rem,0.6vh,0.6rem);">
+            <div class="card-red reveal-scale">
+                <div style="font-size:clamp(1.5rem,3vw,2.5rem); font-weight:900; opacity:0.2; position:absolute; top:clamp(0.5rem,1vh,1rem); right:clamp(0.8rem,1.2vw,1.2rem);">01</div>
+                <h3 style="font-size:var(--h3-size); margin-bottom:clamp(0.3rem,0.6vh,0.6rem); position:relative; z-index:1;">Datos</h3>
+                <ul style="font-size:var(--small-size); position:relative; z-index:1;">
+                    <li>Auditor&iacute;a de Prescripciones</li>
+                    <li>Auditor&iacute;a de Ventas (Demanda)</li>
+                    <li>Dashboards 360&deg; Combinados</li>
+                    <li>Cobertura de Salud</li>
+                    <li>Mercado de Alto Costo (SMR)</li>
+                </ul>
+            </div>
+            <div class="card-red reveal-scale" style="transition-delay:0.15s;">
+                <div style="font-size:clamp(1.5rem,3vw,2.5rem); font-weight:900; opacity:0.2; position:absolute; top:clamp(0.5rem,1vh,1rem); right:clamp(0.8rem,1.2vw,1.2rem);">02</div>
+                <h3 style="font-size:var(--h3-size); margin-bottom:clamp(0.3rem,0.6vh,0.6rem); position:relative; z-index:1;">Consultor&iacute;a</h3>
+                <ul style="font-size:var(--small-size); position:relative; z-index:1;">
+                    <li>Consultor&iacute;a Estrat&eacute;gica</li>
+                    <li>Estudios de Targeting</li>
+                    <li>Reportes Ad-Hoc en Power BI</li>
+                    <li>Business Analyzer</li>
+                    <li>Investigaci&oacute;n Primaria</li>
+                </ul>
+            </div>
+            <div class="card-red reveal-scale" style="transition-delay:0.3s;">
+                <div style="font-size:clamp(1.5rem,3vw,2.5rem); font-weight:900; opacity:0.2; position:absolute; top:clamp(0.5rem,1vh,1rem); right:clamp(0.8rem,1.2vw,1.2rem);">03</div>
+                <h3 style="font-size:var(--h3-size); margin-bottom:clamp(0.3rem,0.6vh,0.6rem); position:relative; z-index:1;">Tecnolog&iacute;a</h3>
+                <ul style="font-size:var(--small-size); position:relative; z-index:1;">
+                    <li>Xplora Web (BI Platform)</li>
+                    <li>Sales Farma CRM</li>
+                    <li>Dashboards &amp; BI</li>
+                    <li>Flat Files para herramientas BI</li>
+                    <li>Rewards &ndash; Premios/Incentivos</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="red-line"></div>
+    <div class="slide-footer"><span>&copy; Close-Up International 2026</span><span>05</span></div>
+</section>
+
+
+<!-- =============================================
+     SLIDE 6: DIVIDER — DATOS
+     ============================================= -->
+<section class="slide divider" data-nav="Datos">
+    <div class="slide-content">
+        <div class="section-label reveal">Unidad de Negocio</div>
+        <h2 class="reveal">Datos: <em>Auditor&iacute;as de Prescripciones y Ventas</em></h2>
+        <p class="reveal" style="margin-top:clamp(0.5rem,1vh,1rem);">La base de toda decisi&oacute;n estrat&eacute;gica en la industria farmac&eacute;utica.</p>
+    </div>
+</section>
+
+
+<!-- =============================================
+     SLIDE 7: AUDITORÍA DE PRESCRIPCIONES
+     ============================================= -->
+<section class="slide" data-nav="Rx Audit">
+    <div class="slide-header">
+        <div class="logo-text">Close-Up <span>International</span></div>
+        <div class="slide-nav"><span>Institucional</span><span class="active">Datos</span><span>Consultor&iacute;a</span><span>Tecnolog&iacute;a</span><span>PSP</span></div>
+    </div>
+    <div class="slide-content" style="padding-top:0;">
+        <div class="section-label reveal">Auditor&iacute;a de Prescripciones</div>
+        <h2 class="reveal">&iquest;Por qu&eacute; es <em>fundamental</em> para su laboratorio?</h2>
+        <p class="reveal" style="max-width:700px; margin-bottom:clamp(0.5rem,1vh,1rem);">La Auditor&iacute;a de Prescripciones es la base para an&aacute;lisis estrat&eacute;gicos y t&aacute;cticos dentro de la compa&ntilde;&iacute;a. Permite entender el h&aacute;bito prescriptivo de los m&eacute;dicos, medir la efectividad promocional y optimizar la fuerza de ventas.</p>
+        <div class="two-col">
+            <div>
+                <h3 class="reveal">Metodolog&iacute;a Estad&iacute;stica</h3>
+                <ul class="reveal">
+                    <li>Muestra representativa que infiere el comportamiento de la poblaci&oacute;n total</li>
+                    <li>Equilibrio de recetas en las diversas regiones de Argentina</li>
+                    <li>Selecci&oacute;n de farmacias seg&uacute;n perfil de ventas espec&iacute;fico</li>
+                    <li>Metodolog&iacute;a propietaria de Close-Up para determinar la muestra</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="reveal">Mayor Cobertura del Mercado</h3>
+                <div class="three-col reveal" style="gap:clamp(0.3rem,0.6vw,0.6rem); margin-top:clamp(0.3rem,0.6vh,0.6rem);">
+                    <div class="card" style="text-align:center; padding:clamp(0.5rem,1vw,1rem);">
+                        <div class="stat-number" style="font-size:clamp(1.2rem,2.5vw,2rem); color:var(--red-primary);">4.105</div>
+                        <div class="stat-label" style="color:var(--gray-dark);">M&eacute;dicos</div>
+                    </div>
+                    <div class="card" style="text-align:center; padding:clamp(0.5rem,1vw,1rem);">
+                        <div class="stat-number" style="font-size:clamp(1.2rem,2.5vw,2rem); color:var(--red-primary);">60.719</div>
+                        <div class="stat-label" style="color:var(--gray-dark);">Prescripciones</div>
+                    </div>
+                    <div class="card" style="text-align:center; padding:clamp(0.5rem,1vw,1rem);">
+                        <div class="stat-number" style="font-size:clamp(1.2rem,2.5vw,2rem); color:var(--red-primary);">33</div>
+                        <div class="stat-label" style="color:var(--gray-dark);">Regiones</div>
+                    </div>
+                </div>
+                <p class="reveal" style="font-size:var(--small-size); color:var(--gray-mid); margin-top:clamp(0.3rem,0.6vh,0.6rem);">458 mol&eacute;culas &bull; 1.075 productos &bull; 116 laboratorios &bull; 38 especialidades terap&eacute;uticas</p>
+            </div>
+        </div>
+    </div>
+    <div class="red-line"></div>
+    <div class="slide-footer"><span>&copy; Close-Up International 2026</span><span>07</span></div>
+</section>
+
+
+<!-- =============================================
+     SLIDE 8: PRESCRIPCIONES — ENTREGABLES
+     ============================================= -->
+<section class="slide" data-nav="Rx M&oacute;dulos">
+    <div class="slide-header">
+        <div class="logo-text">Close-Up <span>International</span></div>
+        <div class="slide-nav"><span>Institucional</span><span class="active">Datos</span><span>Consultor&iacute;a</span><span>Tecnolog&iacute;a</span><span>PSP</span></div>
+    </div>
+    <div class="slide-content" style="padding-top:0;">
+        <div class="section-label reveal">Auditor&iacute;a de Prescripciones &mdash; Entregables</div>
+        <h2 class="reveal">Tres m&oacute;dulos de <em>an&aacute;lisis integrados</em></h2>
+        <div class="three-col" style="margin-top:clamp(0.5rem,1vh,1rem);">
+            <div class="card reveal" style="border-left:3px solid var(--red-primary);">
+                <h3 style="color:var(--red-primary); font-size:var(--body-size); margin-bottom:clamp(0.3rem,0.5vh,0.5rem);">Close-Up Market</h3>
+                <ul style="font-size:var(--small-size);">
+                    <li>Participaci&oacute;n de mercado (MS) por laboratorio, producto y regi&oacute;n</li>
+                    <li>N&uacute;mero de prescripciones absolutas</li>
+                    <li>Cantidad de m&eacute;dicos prescriptores</li>
+                    <li>Variaci&oacute;n de Market Share entre per&iacute;odos</li>
+                    <li>An&aacute;lisis por clase terap&eacute;utica (CT I al IV)</li>
+                    <li>Vistas en tablas y gr&aacute;ficos de tendencia</li>
+                </ul>
+            </div>
+            <div class="card reveal" style="border-left:3px solid var(--red-primary);">
+                <h3 style="color:var(--red-primary); font-size:var(--body-size); margin-bottom:clamp(0.3rem,0.5vh,0.5rem);">Close-Up Targeting</h3>
+                <ul style="font-size:var(--small-size);">
+                    <li>Perfil prescriptivo de m&eacute;dicos por categor&iacute;a</li>
+                    <li>Productividad de m&eacute;dicos con el portafolio</li>
+                    <li>Efectividad promocional de la FFVV</li>
+                    <li>Retorno de inversi&oacute;n por m&eacute;dico</li>
+                    <li>Construcci&oacute;n de panel m&eacute;dico m&aacute;s productivo</li>
+                    <li>Matriz de productividad y potencialidad</li>
+                </ul>
+            </div>
+            <div class="card reveal" style="border-left:3px solid var(--red-primary);">
+                <h3 style="color:var(--red-primary); font-size:var(--body-size); margin-bottom:clamp(0.3rem,0.5vh,0.5rem);">Close-Up Reps</h3>
+                <ul style="font-size:var(--small-size);">
+                    <li>Productividad de m&eacute;dicos con la competencia</li>
+                    <li>Efectividad promocional por representante</li>
+                    <li>Potencial prescriptivo por Rep</li>
+                    <li>M&eacute;dicos visitados vs. no visitados</li>
+                    <li>Productividad receptaria por cartera</li>
+                    <li>An&aacute;lisis por Gerente de Distrito</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="red-line"></div>
+    <div class="slide-footer"><span>&copy; Close-Up International 2026</span><span>08</span></div>
+</section>
+
+
+<!-- =============================================
+     SLIDE 9: AUDITORÍA DE VENTAS — OVERVIEW
+     ============================================= -->
+<section class="slide" data-nav="Ventas Audit">
+    <div class="slide-header">
+        <div class="logo-text">Close-Up <span>International</span></div>
+        <div class="slide-nav"><span>Institucional</span><span class="active">Datos</span><span>Consultor&iacute;a</span><span>Tecnolog&iacute;a</span><span>PSP</span></div>
+    </div>
+    <div class="slide-content" style="padding-top:0;">
+        <div class="section-label reveal">Auditor&iacute;a de Ventas</div>
+        <h2 class="reveal">Informaci&oacute;n estrat&eacute;gica de <em>demanda del mercado</em></h2>
+        <p class="reveal" style="max-width:700px; margin-bottom:clamp(0.5rem,1vh,1rem);">La Auditor&iacute;a de Ventas es fundamental para analizar las estrategias de Marketing y Ventas y medir sus resultados de forma sistem&aacute;tica. Close-Up captura datos de venta directa (98% del mercado) e indirecta a trav&eacute;s de droguer&iacute;as y farmacias.</p>
+
+        <h3 class="reveal" style="margin-bottom:clamp(0.3rem,0.6vh,0.6rem);">Presencia Regional</h3>
+        <div class="timeline reveal" style="margin-bottom:clamp(0.5rem,1vh,1rem);">
+            <div class="timeline-item">
+                <div class="timeline-year">2014</div>
+                <div class="timeline-text">Lanzamiento en Brasil: primer mercado de ventas</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2015</div>
+                <div class="timeline-text">Argentina se suma con ambas auditor&iacute;as integradas</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2016</div>
+                <div class="timeline-text">Colombia y Ecuador se incorporan al servicio</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2017</div>
+                <div class="timeline-text">Chile completa la integraci&oacute;n Rx + Ventas</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2018+</div>
+                <div class="timeline-text">Centro Am&eacute;rica, Paraguay, Per&uacute;, Uruguay, Venezuela</div>
+            </div>
+        </div>
+
+        <div class="flow-row reveal">
+            <div class="flow-box">Industria</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-box">Droguer&iacute;as / ADEM</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-box red">Close-Up</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-box">Farmacias</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-box">Consumidor Final</div>
+        </div>
+    </div>
+    <div class="red-line"></div>
+    <div class="slide-footer"><span>&copy; Close-Up International 2026</span><span>09</span></div>
+</section>
+
+
+<!-- =============================================
+     SLIDE 10: AUDITORÍA DE VENTAS — MÓDULOS
+     ============================================= -->
+<section class="slide" data-nav="Ventas M&oacute;dulos">
+    <div class="slide-header">
+        <div class="logo-text">Close-Up <span>International</span></div>
+        <div class="slide-nav"><span>Institucional</span><span class="active">Datos</span><span>Consultor&iacute;a</span><span>Tecnolog&iacute;a</span><span>PSP</span></div>
+    </div>
+    <div class="slide-content" style="padding-top:0;">
+        <div class="section-label reveal">Auditor&iacute;a de Ventas &mdash; 4 M&oacute;dulos</div>
+        <h2 class="reveal">Visi&oacute;n completa desde el <em>mercado hasta el territorio</em></h2>
+        <div class="four-col" style="margin-top:clamp(0.5rem,1vh,1rem);">
+            <div class="card reveal" style="border-top:3px solid var(--red-primary);">
+                <h3 style="font-size:var(--body-size); color:var(--red-primary); margin-bottom:0.3rem;">RM &ndash; Retail Market</h3>
+                <ul style="font-size:var(--small-size);">
+                    <li>Market share en mercados de competencia</li>
+                    <li>Rotaci&oacute;n y distribuci&oacute;n num&eacute;rica/ponderada</li>
+                    <li>Desempe&ntilde;o por regi&oacute;n y provincia</li>
+                    <li>Competitividad en precio</li>
+                    <li>An&aacute;lisis Rx/OTC</li>
+                </ul>
+            </div>
+            <div class="card reveal" style="border-top:3px solid var(--red-primary);">
+                <h3 style="font-size:var(--body-size); color:var(--red-primary); margin-bottom:0.3rem;">TD &ndash; Territorial Data</h3>
+                <ul style="font-size:var(--small-size);">
+                    <li>Sell-in por regi&oacute;n, territorio y CP</li>
+                    <li>Apertura por Gte. Regional/Distrito/Rep</li>
+                    <li>Elementos de crecimiento</li>
+                    <li>Tendencia y afinidad</li>
+                    <li>Informaci&oacute;n en 8 d&iacute;as h&aacute;biles</li>
+                </ul>
+            </div>
+            <div class="card reveal" style="border-top:3px solid var(--red-primary);">
+                <h3 style="font-size:var(--body-size); color:var(--red-primary); margin-bottom:0.3rem;">PT &ndash; Product Tracking</h3>
+                <ul style="font-size:var(--small-size);">
+                    <li>Demanda de todas las SKUs por regi&oacute;n y CP</li>
+                    <li>Desempe&ntilde;o por FFVV y punto de venta</li>
+                    <li>Rotaci&oacute;n y distribuci&oacute;n por CP</li>
+                    <li>Potencialidad por territorio</li>
+                </ul>
+            </div>
+            <div class="card reveal" style="border-top:3px solid var(--red-primary);">
+                <h3 style="font-size:var(--body-size); color:var(--red-primary); margin-bottom:0.3rem;">ADD &ndash; An&aacute;lisis Distribuci&oacute;n</h3>
+                <ul style="font-size:var(--small-size);">
+                    <li>Market share del producto y CPA</li>
+                    <li>Distribuci&oacute;n nominal y ponderada</li>
+                    <li>Desempe&ntilde;o por regi&oacute;n y territorio</li>
+                    <li>An&aacute;lisis por perfil de CPA</li>
+                </ul>
+            </div>
+        </div>
+        <p class="reveal" style="font-size:var(--small-size); color:var(--gray-mid); margin-top:clamp(0.4rem,0.8vh,0.8rem);">M&eacute;tricas compartidas: Unidades, Dosis, Pesos, Distribuci&oacute;n Nominal/Ponderada, Rotaci&oacute;n, Cantidad de CPs.</p>
+    </div>
+    <div class="red-line"></div>
+    <div class="slide-footer"><span>&copy; Close-Up International 2026</span><span>10</span></div>
+</section>
+
+
+<!-- =============================================
+     SLIDE 11: VENTAS — DIFERENCIAL COMPETITIVO
+     ============================================= -->
+<section class="slide" data-nav="Diferencial">
+    <div class="slide-header">
+        <div class="logo-text">Close-Up <span>International</span></div>
+        <div class="slide-nav"><span>Institucional</span><span class="active">Datos</span><span>Consultor&iacute;a</span><span>Tecnolog&iacute;a</span><span>PSP</span></div>
+    </div>
+    <div class="content-horizontal">
+        <div class="text-side">
+            <div class="section-label reveal">Nuestro Diferencial</div>
+            <h2 class="reveal">Ventaja competitiva en <em>velocidad y profundidad</em></h2>
+            <div style="margin-top:clamp(0.5rem,1vh,1rem);">
+                <h3 class="reveal">CU Sales Market</h3>
+                <ul class="reveal" style="margin-bottom:clamp(0.5rem,1vh,1rem);">
+                    <li>Disponibilidad dentro de los primeros <strong style="font-weight:600;">7 d&iacute;as h&aacute;biles</strong></li>
+                    <li>Datos m&aacute;s completos y detallados para optimizar estrategia de ventas</li>
+                    <li>An&aacute;lisis de rotaci&oacute;n, distribuci&oacute;n f&iacute;sica y ponderada</li>
+                    <li>Dashboard anal&iacute;tico preconfigurado + exportaci&oacute;n de datos</li>
+                    <li>Definiciones de mercado ad hoc</li>
+                </ul>
+                <h3 class="reveal">CU Territorial Data</h3>
+                <ul class="reveal">
+                    <li>Informaci&oacute;n disponible Online y Offline</li>
+                    <li>Disponibilidad en <strong style="font-weight:600;">8 d&iacute;as h&aacute;biles</strong></li>
+                    <li>An&aacute;lisis por regi&oacute;n, provincia y ciudad</li>
+                    <li>Acceso v&iacute;a m&uacute;ltiples plataformas: Qsence / Xplora</li>
+                    <li>Alertas para generar acciones inmediatas</li>
+                </ul>
+            </div>
+        </div>
+        <div class="accent-card reveal-scale">
+            <div style="position:relative; z-index:1;">
+                <div class="stat-number" style="color:white; font-size:clamp(1.8rem,4vw,3rem);">94%</div>
+                <div class="stat-label" style="color:rgba(255,255,255,0.8);">Cobertura LATAM<br>en auditor&iacute;as de ventas</div>
+                <div style="margin-top:clamp(0.8rem,1.5vh,1.5rem); border-top:1px solid rgba(255,255,255,0.2); padding-top:clamp(0.5rem,1vh,1rem);">
+                    <div class="stat-number" style="color:white; font-size:clamp(1.5rem,3vw,2.5rem);">98%</div>
+                    <div class="stat-label" style="color:rgba(255,255,255,0.8);">Captura venta directa<br>en Argentina</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="red-line"></div>
+    <div class="slide-footer"><span>&copy; Close-Up International 2026</span><span>11</span></div>
+</section>
+
+
+<!-- =============================================
+     SLIDE 12: MERCADO DE ALTO COSTO (SMR)
+     ============================================= -->
+<section class="slide" data-nav="SMR">
+    <div class="slide-header">
+        <div class="logo-text">Close-Up <span>International</span></div>
+        <div class="slide-nav"><span>Institucional</span><span class="active">Datos</span><span>Consultor&iacute;a</span><span>Tecnolog&iacute;a</span><span>PSP</span></div>
+    </div>
+    <div class="slide-content" style="padding-top:0;">
+        <div class="section-label reveal">Specialties Market Research (SMR)</div>
+        <h2 class="reveal">La m&aacute;s completa informaci&oacute;n del <em>mercado de alto costo</em></h2>
+        <div class="two-col" style="margin-top:clamp(0.5rem,1vh,1rem);">
+            <div>
+                <h3 class="reveal">Composici&oacute;n de la Muestra</h3>
+                <div class="reveal" style="display:flex; flex-wrap:wrap; gap:clamp(0.4rem,0.8vw,0.8rem); margin:clamp(0.3rem,0.6vh,0.6rem) 0;">
+                    <div class="badge">101 Coberturas de Salud</div>
+                    <div class="badge">PAMI</div>
+                    <div class="badge">Sindical</div>
+                    <div class="badge">Provincial</div>
+                    <div class="badge">Medicina Privada</div>
+                </div>
+                <h3 class="reveal" style="margin-top:clamp(0.3rem,0.6vh,0.6rem);">Soluciones</h3>
+                <ul class="reveal" style="font-size:var(--small-size);">
+                    <li>An&aacute;lisis de perfil de empresas y competencia</li>
+                    <li>Estudios de demanda actual y potencial</li>
+                    <li>An&aacute;lisis de potenciales segmentos</li>
+                    <li>Market share por patolog&iacute;a y sistema de salud</li>
+                    <li>Estudios de mercado, competidores y mercados atractivos</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="reveal">Reportes</h3>
+                <ul class="reveal" style="font-size:var(--small-size); margin-bottom:clamp(0.4rem,0.8vh,0.8rem);">
+                    <li>Cantidad de m&eacute;dicos y prescripciones por patolog&iacute;a</li>
+                    <li>Distribuci&oacute;n geogr&aacute;fica por especialidad</li>
+                    <li>Ranking de laboratorios, m&eacute;dicos, productos, droga</li>
+                    <li>Ranking de obras sociales y coberturas de salud</li>
+                </ul>
+                <div class="three-col reveal" style="gap:clamp(0.3rem,0.6vw,0.6rem);">
+                    <div class="card" style="text-align:center; padding:clamp(0.4rem,0.8vw,0.8rem);">
+                        <div style="font-size:clamp(1rem,2vw,1.5rem); font-weight:800; color:var(--red-primary);">458</div>
+                        <div style="font-size:var(--small-size); color:var(--gray-mid);">Mol&eacute;culas</div>
+                    </div>
+                    <div class="card" style="text-align:center; padding:clamp(0.4rem,0.8vw,0.8rem);">
+                        <div style="font-size:clamp(1rem,2vw,1.5rem); font-weight:800; color:var(--red-primary);">1.075</div>
+                        <div style="font-size:var(--small-size); color:var(--gray-mid);">Productos</div>
+                    </div>
+                    <div class="card" style="text-align:center; padding:clamp(0.4rem,0.8vw,0.8rem);">
+                        <div style="font-size:clamp(1rem,2vw,1.5rem); font-weight:800; color:var(--red-primary);">116</div>
+                        <div style="font-size:var(--small-size); color:var(--gray-mid);">Laboratorios</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="red-line"></div>
+    <div class="slide-footer"><span>&copy; Close-Up International 2026</span><span>12</span></div>
+</section>
+
+
+<!-- =============================================
+     SLIDE 13: DIVIDER — CONSULTORÍA
+     ============================================= -->
+<section class="slide divider" data-nav="Consultor&iacute;a">
+    <div class="slide-content">
+        <div class="section-label reveal">Unidad de Negocio</div>
+        <h2 class="reveal">Consultor&iacute;a <em>Estrat&eacute;gica</em></h2>
+        <p class="reveal" style="margin-top:clamp(0.5rem,1vh,1rem);">Transformamos datos en decisiones accionables para su fuerza comercial.</p>
+    </div>
+</section>
+
+
+<!-- =============================================
+     SLIDE 14: CONSULTORÍA ESTRATÉGICA
+     ============================================= -->
+<section class="slide" data-nav="Consultor&iacute;a Det.">
+    <div class="slide-header">
+        <div class="logo-text">Close-Up <span>International</span></div>
+        <div class="slide-nav"><span>Institucional</span><span>Datos</span><span class="active">Consultor&iacute;a</span><span>Tecnolog&iacute;a</span><span>PSP</span></div>
+    </div>
+    <div class="slide-content" style="padding-top:0;">
+        <div class="section-label reveal">Consultor&iacute;a &amp; Estudios</div>
+        <h2 class="reveal">Visi&oacute;n integral de la relaci&oacute;n <em>con sus clientes</em></h2>
+        <p class="reveal" style="max-width:700px; margin-bottom:clamp(0.5rem,1vh,1rem);">An&aacute;lisis en los diferentes puntos de interacci&oacute;n para maximizar el impacto comercial y promocional de su laboratorio.</p>
+        <div class="three-col" style="margin-top:clamp(0.3rem,0.6vh,0.6rem);">
+            <div class="card reveal" style="border-top:3px solid var(--red-primary);">
+                <h3 style="font-size:var(--body-size); color:var(--red-primary); margin-bottom:0.3rem;">Targeting &amp; Segmentaci&oacute;n</h3>
+                <ul style="font-size:var(--small-size);">
+                    <li>Potencial prescriptivo por especialidad y regi&oacute;n</li>
+                    <li>Productividad de m&eacute;dicos con su portafolio</li>
+                    <li>Segmentaci&oacute;n y alineaci&oacute;n &oacute;ptima de FFVV</li>
+                    <li>One Shot: an&aacute;lisis puntual de Demanda &amp; Rx</li>
+                </ul>
+            </div>
+            <div class="card reveal" style="border-top:3px solid var(--red-primary);">
+                <h3 style="font-size:var(--body-size); color:var(--red-primary); margin-bottom:0.3rem;">Performance &amp; KPIs</h3>
+                <ul style="font-size:var(--small-size);">
+                    <li>An&aacute;lisis de performance de FFVV</li>
+                    <li>Implementaci&oacute;n de KPIs e incentivos</li>
+                    <li>Efectividad promocional</li>
+                    <li>Retorno de inversi&oacute;n por m&eacute;dico visitado</li>
+                </ul>
+            </div>
+            <div class="card reveal" style="border-top:3px solid var(--red-primary);">
+                <h3 style="font-size:var(--body-size); color:var(--red-primary); margin-bottom:0.3rem;">Herramientas de An&aacute;lisis</h3>
+                <ul style="font-size:var(--small-size);">
+                    <li>Business Analyzer</li>
+                    <li>Reportes Ad-Hoc en Power BI</li>
+                    <li>Estudios especiales de tendencia y afinidad</li>
+                    <li>An&aacute;lisis de cobertura de salud</li>
+                    <li>Prescribers: perfil prescriptivo offline</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="red-line"></div>
+    <div class="slide-footer"><span>&copy; Close-Up International 2026</span><span>14</span></div>
+</section>
+
+
+<!-- =============================================
+     SLIDE 15: DIVIDER — TECNOLOGÍA
+     ============================================= -->
+<section class="slide divider" data-nav="Tecnolog&iacute;a">
+    <div class="slide-content">
+        <div class="section-label reveal">Unidad de Negocio</div>
+        <h2 class="reveal">Tecnolog&iacute;a: <em>Xplora Web &amp; Sales Farma</em></h2>
+        <p class="reveal" style="margin-top:clamp(0.5rem,1vh,1rem);">Plataformas propias dise&ntilde;adas por y para la industria farmac&eacute;utica.</p>
+    </div>
+</section>
+
+
+<!-- =============================================
+     SLIDE 16: XPLORA WEB
+     ============================================= -->
+<section class="slide" data-nav="Xplora">
+    <div class="slide-header">
+        <div class="logo-text">Close-Up <span>International</span></div>
+        <div class="slide-nav"><span>Institucional</span><span>Datos</span><span>Consultor&iacute;a</span><span class="active">Tecnolog&iacute;a</span><span>PSP</span></div>
+    </div>
+    <div class="slide-content" style="padding-top:0;">
+        <div class="section-label reveal">Xplora Web &mdash; Business Intelligence</div>
+        <h2 class="reveal">Inteligencia de negocios <em>r&aacute;pida y confiable</em></h2>
+        <p class="reveal" style="max-width:700px; margin-bottom:clamp(0.5rem,1vh,1rem);">Software especializado dise&ntilde;ado por ingenieros y ex ejecutivos de la industria. Estructura modular con an&aacute;lisis num&eacute;ricos y gr&aacute;ficos bajo concepto estad&iacute;stico descriptivo.</p>
+        <div class="three-col">
+            <div class="card reveal" style="border-top:3px solid var(--red-primary);">
+                <h3 style="font-size:var(--body-size); color:var(--red-primary); margin-bottom:0.3rem;">M&oacute;dulo Mercado</h3>
+                <ul style="font-size:var(--small-size);">
+                    <li>Mercado Prescriptivo: MS, prescripciones, m&eacute;dicos, variaci&oacute;n</li>
+                    <li>An&aacute;lisis por Regi&oacute;n: potencialidad y participaci&oacute;n</li>
+                    <li>Portafolio de Contribuci&oacute;n</li>
+                    <li>Tabla Pivote para an&aacute;lisis ad hoc</li>
+                </ul>
+            </div>
+            <div class="card reveal" style="border-top:3px solid var(--red-primary);">
+                <h3 style="font-size:var(--body-size); color:var(--red-primary); margin-bottom:0.3rem;">M&oacute;dulo Targeting</h3>
+                <ul style="font-size:var(--small-size);">
+                    <li>Reporte Ejecutivo</li>
+                    <li>Cobertura por Categor&iacute;as</li>
+                    <li>Jerarqu&iacute;a Recetaria</li>
+                    <li>M&eacute;dicos Ponderados</li>
+                </ul>
+            </div>
+            <div class="card reveal" style="border-top:3px solid var(--red-primary);">
+                <h3 style="font-size:var(--body-size); color:var(--red-primary); margin-bottom:0.3rem;">M&oacute;dulo Representantes</h3>
+                <ul style="font-size:var(--small-size);">
+                    <li>An&aacute;lisis de Productividad</li>
+                    <li>Cobertura de Fuerza de Ventas</li>
+                    <li>Jerarqu&iacute;a por Representante</li>
+                    <li>Exportaci&oacute;n a Excel</li>
+                </ul>
+            </div>
+        </div>
+        <p class="reveal" style="font-size:var(--small-size); color:var(--gray-mid); margin-top:clamp(0.4rem,0.8vh,0.8rem); font-style:italic;">Acceso web seguro, consultas guardadas con actualizaci&oacute;n autom&aacute;tica, filtros ad hoc por laboratorio/especialidad/per&iacute;odo, y m&uacute;ltiples formatos de visualizaci&oacute;n.</p>
+    </div>
+    <div class="red-line"></div>
+    <div class="slide-footer"><span>&copy; Close-Up International 2026</span><span>16</span></div>
+</section>
+
+
+<!-- =============================================
+     SLIDE 17: SALES FARMA CRM
+     ============================================= -->
+<section class="slide" data-nav="CRM">
+    <div class="slide-header">
+        <div class="logo-text">Close-Up <span>International</span></div>
+        <div class="slide-nav"><span>Institucional</span><span>Datos</span><span>Consultor&iacute;a</span><span class="active">Tecnolog&iacute;a</span><span>PSP</span></div>
+    </div>
+    <div class="slide-content" style="padding-top:0;">
+        <div class="section-label reveal">Sales Farma &mdash; CRM Farmac&eacute;utico</div>
+        <h2 class="reveal">El ecosistema CRM m&aacute;s <em>completo de Latinoam&eacute;rica</em></h2>
+        <div class="two-col" style="margin-top:clamp(0.5rem,1vh,1rem);">
+            <div>
+                <h3 class="reveal">Ventajas Competitivas</h3>
+                <ul class="reveal">
+                    <li>Soluci&oacute;n CRM Offline, Multichannel y Multiplataforma</li>
+                    <li>Integraci&oacute;n nativa con Auditor&iacute;as de Prescripciones y Ventas</li>
+                    <li>Dashboard y Resumen Ejecutivo con Drill Down de KPIs</li>
+                    <li>Vista Multichannel de Clientes 360&deg;</li>
+                    <li>Visita Remota Face to Face y Marketing Digital</li>
+                    <li>Implementaci&oacute;n &aacute;gil de 7-8 semanas</li>
+                    <li>Soporte local con oficinas propias en todo LATAM</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="reveal">Ecosistema de M&oacute;dulos</h3>
+                <div style="display:flex; flex-direction:column; gap:clamp(0.3rem,0.6vh,0.6rem);">
+                    <div class="card reveal" style="padding:clamp(0.4rem,0.8vw,0.8rem);">
+                        <h3 style="font-size:var(--small-size); color:var(--red-primary); margin-bottom:0.2rem;">Dashboard Gerencial</h3>
+                        <p style="font-size:var(--small-size);">Seguimiento diario de gesti&oacute;n de representantes con KPIs principales.</p>
+                    </div>
+                    <div class="card reveal" style="padding:clamp(0.4rem,0.8vw,0.8rem);">
+                        <h3 style="font-size:var(--small-size); color:var(--red-primary); margin-bottom:0.2rem;">M&oacute;dulo de Reportes</h3>
+                        <p style="font-size:var(--small-size);">Integraci&oacute;n completa de visitas, reportes y acciones promocionales.</p>
+                    </div>
+                    <div class="card reveal" style="padding:clamp(0.4rem,0.8vw,0.8rem);">
+                        <h3 style="font-size:var(--small-size); color:var(--red-primary); margin-bottom:0.2rem;">Entrenamiento/Coaching</h3>
+                        <p style="font-size:var(--small-size);">M&oacute;dulo de entrenamiento virtual integrado para la fuerza de ventas.</p>
+                    </div>
+                    <div class="card reveal" style="padding:clamp(0.4rem,0.8vw,0.8rem);">
+                        <h3 style="font-size:var(--small-size); color:var(--red-primary); margin-bottom:0.2rem;">Geo-Eficiencia</h3>
+                        <p style="font-size:var(--small-size);">Autoesti&oacute;n de ficheros y exportaciones para BI propios del cliente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="red-line"></div>
+    <div class="slide-footer"><span>&copy; Close-Up International 2026</span><span>17</span></div>
+</section>
+
+
+<!-- =============================================
+     SLIDE 18: DIVIDER — PROGRAMAS DE PACIENTES
+     ============================================= -->
+<section class="slide divider" data-nav="PSP">
+    <div class="slide-content">
+        <div class="section-label reveal">Servicios Especializados</div>
+        <h2 class="reveal">Programas de <em>Pacientes (PSP)</em></h2>
+        <p class="reveal" style="margin-top:clamp(0.5rem,1vh,1rem);">Farma eRP: 19 a&ntilde;os de experiencia en Access Management y Orientaci&oacute;n de Cobertura para la industria farmac&eacute;utica.</p>
+    </div>
+</section>
+
+
+<!-- =============================================
+     SLIDE 19: PSP — QUIÉNES SOMOS & MODELO
+     ============================================= -->
+<section class="slide" data-nav="PSP Info">
+    <div class="slide-header">
+        <div class="logo-text">Close-Up <span>International</span></div>
+        <div class="slide-nav"><span>Institucional</span><span>Datos</span><span>Consultor&iacute;a</span><span>Tecnolog&iacute;a</span><span class="active">PSP</span></div>
+    </div>
+    <div class="content-horizontal">
+        <div class="text-side">
+            <div class="section-label reveal">Farma eRP &mdash; Programas de Pacientes</div>
+            <h2 class="reveal">Ayudamos a los pacientes a <em>acceder a sus medicamentos</em></h2>
+            <p class="reveal" style="margin-bottom:clamp(0.5rem,1vh,1rem);">Agencia especializada con operaciones en Chile, Per&uacute;, M&eacute;xico, Ecuador y Argentina. Procedimientos validados en due diligences y auditor&iacute;as de clientes. M&aacute;s de <strong style="font-weight:600;">100.000 pacientes</strong> gestionados en programas de medicamentos de especialidad.</p>
+            <h3 class="reveal">Modelo V&iacute;nculos</h3>
+            <p class="reveal" style="font-size:var(--small-size);">Modelo de intervenci&oacute;n en salud integrado, coherente y personalizado, con el objetivo de lograr adherencia a tratamientos a trav&eacute;s de cambios en el comportamiento de las personas.</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:clamp(0.4rem,0.8vh,0.8rem); min-width:clamp(180px,20vw,280px);">
+            <div class="card reveal" style="padding:clamp(0.5rem,1vw,1rem); text-align:center;">
+                <div style="font-size:clamp(0.8rem,1.2vw,1rem); font-weight:700; color:var(--red-primary);">Principales Clientes</div>
+            </div>
+            <div class="card reveal" style="padding:clamp(0.3rem,0.6vw,0.6rem); font-size:var(--small-size); text-align:center;">Novartis</div>
+            <div class="card reveal" style="padding:clamp(0.3rem,0.6vw,0.6rem); font-size:var(--small-size); text-align:center;">Roche</div>
+            <div class="card reveal" style="padding:clamp(0.3rem,0.6vw,0.6rem); font-size:var(--small-size); text-align:center;">Pfizer</div>
+            <div class="card reveal" style="padding:clamp(0.3rem,0.6vw,0.6rem); font-size:var(--small-size); text-align:center;">Johnson &amp; Johnson</div>
+            <div class="card reveal" style="padding:clamp(0.3rem,0.6vw,0.6rem); font-size:var(--small-size); text-align:center;">MSD</div>
+            <div class="card reveal" style="padding:clamp(0.3rem,0.6vw,0.6rem); font-size:var(--small-size); text-align:center;">Novo Nordisk</div>
+        </div>
+    </div>
+    <div class="red-line"></div>
+    <div class="slide-footer"><span>&copy; Close-Up International 2026</span><span>19</span></div>
+</section>
+
+
+<!-- =============================================
+     SLIDE 20: PSP — SERVICIOS
+     ============================================= -->
+<section class="slide" data-nav="PSP Serv.">
+    <div class="slide-header">
+        <div class="logo-text">Close-Up <span>International</span></div>
+        <div class="slide-nav"><span>Institucional</span><span>Datos</span><span>Consultor&iacute;a</span><span>Tecnolog&iacute;a</span><span class="active">PSP</span></div>
+    </div>
+    <div class="slide-content" style="padding-top:0;">
+        <div class="section-label reveal">&Aacute;reas de Servicio PSP</div>
+        <h2 class="reveal">Servicios integrales de <em>gesti&oacute;n de pacientes</em></h2>
+        <div class="four-col" style="margin-top:clamp(0.5rem,1vh,1rem);">
+            <div class="card reveal" style="border-top:3px solid var(--red-primary);">
+                <h3 style="font-size:var(--small-size); color:var(--red-primary); margin-bottom:0.3rem;">Contact Center</h3>
+                <ul style="font-size:clamp(0.55rem,0.75vw,0.7rem);">
+                    <li>Plataforma exclusiva de salud</li>
+                    <li>Enfermera coordinadora + equipo profesional</li>
+                    <li>VoIP con IVR y cascada inteligente</li>
+                    <li>100% de llamadas grabadas</li>
+                    <li>WhatsApp, email, SMS, web</li>
+                </ul>
+            </div>
+            <div class="card reveal" style="border-top:3px solid var(--red-primary);">
+                <h3 style="font-size:var(--small-size); color:var(--red-primary); margin-bottom:0.3rem;">Orientaci&oacute;n de Cobertura</h3>
+                <ul style="font-size:clamp(0.55rem,0.75vw,0.7rem);">
+                    <li>Asesor&iacute;a para comprender y utilizar beneficios</li>
+                    <li>Simulaci&oacute;n de copagos</li>
+                    <li>Preparaci&oacute;n de solicitudes</li>
+                    <li>Escalamientos a SIS</li>
+                    <li>Comit&eacute; de Acceso</li>
+                </ul>
+            </div>
+            <div class="card reveal" style="border-top:3px solid var(--red-primary);">
+                <h3 style="font-size:var(--small-size); color:var(--red-primary); margin-bottom:0.3rem;">Adherencia &amp; Copago</h3>
+                <ul style="font-size:clamp(0.55rem,0.75vw,0.7rem);">
+                    <li>Educaci&oacute;n en administraci&oacute;n del medicamento</li>
+                    <li>Contacto regular de seguimiento</li>
+                    <li>Registro de entregas</li>
+                    <li>Beneficio al copago: c&aacute;lculo, aprobaci&oacute;n, pago</li>
+                    <li>Material educativo</li>
+                </ul>
+            </div>
+            <div class="card reveal" style="border-top:3px solid var(--red-primary);">
+                <h3 style="font-size:var(--small-size); color:var(--red-primary); margin-bottom:0.3rem;">Farmacovigilancia</h3>
+                <ul style="font-size:clamp(0.55rem,0.75vw,0.7rem);">
+                    <li>Reporte y conciliaci&oacute;n de eventos adversos</li>
+                    <li>Q.F. de amplia experiencia a cargo</li>
+                    <li>Control de calidad de reportes</li>
+                    <li>Auditor&iacute;a de llamadas</li>
+                    <li>Sistema CAPA</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="red-line"></div>
+    <div class="slide-footer"><span>&copy; Close-Up International 2026</span><span>20</span></div>
+</section>
+
+
+<!-- =============================================
+     SLIDE 21: PSP — SEGURIDAD & REPORTES
+     ============================================= -->
+<section class="slide" data-nav="PSP Seguridad">
+    <div class="slide-header">
+        <div class="logo-text">Close-Up <span>International</span></div>
+        <div class="slide-nav"><span>Institucional</span><span>Datos</span><span>Consultor&iacute;a</span><span>Tecnolog&iacute;a</span><span class="active">PSP</span></div>
+    </div>
+    <div class="slide-content" style="padding-top:0;">
+        <div class="two-col">
+            <div>
+                <div class="section-label reveal">Seguridad de Datos &amp; Calidad</div>
+                <h3 class="reveal" style="margin-bottom:clamp(0.3rem,0.6vh,0.6rem);">Modelo de Seguridad</h3>
+                <ul class="reveal">
+                    <li>Operaci&oacute;n alojada en servidores <strong style="font-weight:600;">AWS</strong> (Amazon Web Services)</li>
+                    <li>Cumple requerimientos corporativos de seguridad IT para datos cr&iacute;ticos</li>
+                    <li>Base de datos <strong style="font-weight:600;">encriptada</strong></li>
+                    <li>Sistema EspoCRM alojado en AWS</li>
+                    <li>Acceso seguro v&iacute;a conexiones <strong style="font-weight:600;">SSL</strong></li>
+                    <li>Passwords, documentos sensibles y procedimientos securitizados</li>
+                </ul>
+                <h3 class="reveal" style="margin-top:clamp(0.5rem,1vh,1rem); margin-bottom:clamp(0.3rem,0.6vh,0.6rem);">Sistema de Gesti&oacute;n de Calidad</h3>
+                <ul class="reveal">
+                    <li>Procedimientos de operaci&oacute;n est&aacute;ndar validados</li>
+                    <li>Due diligences y auditor&iacute;as de clientes recurrentes</li>
+                    <li>Red de m&aacute;s de 120 proveedores en convenio</li>
+                </ul>
+            </div>
+            <div>
+                <div class="section-label reveal">M&oacute;dulo de Reportes</div>
+                <h3 class="reveal" style="margin-bottom:clamp(0.3rem,0.6vh,0.6rem);">Reportes en L&iacute;nea</h3>
+                <p class="reveal" style="margin-bottom:clamp(0.3rem,0.6vh,0.6rem);">Desde plataforma EspoCRM, con datos anonimizados. Principales KPIs:</p>
+                <ul class="reveal">
+                    <li>Pacientes en programa por medicamento, prescriptor, centro de salud</li>
+                    <li>Time to pill (tiempo hasta inicio de tratamiento)</li>
+                    <li>Tiempo hasta abandono</li>
+                    <li>Adherencia continua promedio</li>
+                    <li>Indicadores de call center: volumen, duraci&oacute;n, tiempo de respuesta</li>
+                </ul>
+                <h3 class="reveal" style="margin-top:clamp(0.5rem,1vh,1rem); margin-bottom:clamp(0.3rem,0.6vh,0.6rem);">&Aacute;reas Terap&eacute;uticas</h3>
+                <div class="reveal" style="display:flex; flex-wrap:wrap; gap:clamp(0.2rem,0.4vw,0.4rem);">
+                    <div class="badge">Oncolog&iacute;a</div>
+                    <div class="badge">Inmunolog&iacute;a</div>
+                    <div class="badge">Neurociencias</div>
+                    <div class="badge">Respiratorio</div>
+                    <div class="badge">Cardiovascular</div>
+                    <div class="badge">Metabolismo</div>
+                    <div class="badge">Oftalmolog&iacute;a</div>
+                    <div class="badge">Hemoderivados</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="red-line"></div>
+    <div class="slide-footer"><span>&copy; Close-Up International 2026</span><span>21</span></div>
+</section>
+
+
+<!-- =============================================
+     SLIDE 22: CONTROL DE CALIDAD GENERAL
+     ============================================= -->
+<section class="slide" data-nav="QA">
+    <div class="slide-header">
+        <div class="logo-text">Close-Up <span>International</span></div>
+        <div class="slide-nav"><span class="active">Institucional</span><span>Datos</span><span>Consultor&iacute;a</span><span>Tecnolog&iacute;a</span><span>PSP</span></div>
+    </div>
+    <div class="slide-content" style="padding-top:0;">
+        <div class="section-label reveal">Proceso de Calidad</div>
+        <h2 class="reveal">Control de calidad en <em>4 grandes etapas</em></h2>
+        <div class="four-col" style="margin-top:clamp(0.5rem,1vh,1rem);">
+            <div class="card-red reveal-scale" style="text-align:center;">
+                <div style="font-size:clamp(1.5rem,3vw,2.5rem); font-weight:900; opacity:0.3;">01</div>
+                <h3 style="font-size:var(--body-size); margin:clamp(0.3rem,0.5vh,0.5rem) 0;">Captaci&oacute;n</h3>
+                <p style="font-size:var(--small-size);">Recolecci&oacute;n de datos en fuentes primarias con metodolog&iacute;a propia y control muestral.</p>
+            </div>
+            <div class="card-red reveal-scale" style="text-align:center; transition-delay:0.1s;">
+                <div style="font-size:clamp(1.5rem,3vw,2.5rem); font-weight:900; opacity:0.3;">02</div>
+                <h3 style="font-size:var(--body-size); margin:clamp(0.3rem,0.5vh,0.5rem) 0;">Validaci&oacute;n</h3>
+                <p style="font-size:var(--small-size);">Procesos automatizados y manuales de verificaci&oacute;n de integridad y consistencia.</p>
+            </div>
+            <div class="card-red reveal-scale" style="text-align:center; transition-delay:0.2s;">
+                <div style="font-size:clamp(1.5rem,3vw,2.5rem); font-weight:900; opacity:0.3;">03</div>
+                <h3 style="font-size:var(--body-size); margin:clamp(0.3rem,0.5vh,0.5rem) 0;">Procesamiento</h3>
+                <p style="font-size:var(--small-size);">Transformaci&oacute;n de datos crudos en informaci&oacute;n accionable con indicadores est&aacute;ndar.</p>
+            </div>
+            <div class="card-red reveal-scale" style="text-align:center; transition-delay:0.3s;">
+                <div style="font-size:clamp(1.5rem,3vw,2.5rem); font-weight:900; opacity:0.3;">04</div>
+                <h3 style="font-size:var(--body-size); margin:clamp(0.3rem,0.5vh,0.5rem) 0;">Entrega</h3>
+                <p style="font-size:var(--small-size);">Distribuci&oacute;n oportuna en m&uacute;ltiples plataformas: Xplora, Qsence, dashboards.</p>
+            </div>
+        </div>
+        <div class="badge-row reveal" style="margin-top:clamp(0.6rem,1.2vh,1.2rem); justify-content:center;">
+            <div class="badge"><div class="icon">&#10003;</div>PwC Anual</div>
+            <div class="badge"><div class="icon">&#10003;</div>ISO 9001</div>
+            <div class="badge"><div class="icon">&#10003;</div>ISO 27.001</div>
+            <div class="badge"><div class="icon">&#10003;</div>Continuous Improvement Award</div>
+        </div>
+    </div>
+    <div class="red-line"></div>
+    <div class="slide-footer"><span>&copy; Close-Up International 2026</span><span>22</span></div>
+</section>
+
+
+<!-- =============================================
+     SLIDE 23: EQUIPO
+     ============================================= -->
+<section class="slide" data-nav="Equipo">
+    <div class="slide-header">
+        <div class="logo-text">Close-Up <span>International</span></div>
+        <div class="slide-nav"><span class="active">Institucional</span><span>Datos</span><span>Consultor&iacute;a</span><span>Tecnolog&iacute;a</span><span>PSP</span></div>
+    </div>
+    <div class="slide-content" style="padding-top:0;">
+        <div class="section-label reveal">Nuestro Equipo</div>
+        <h2 class="reveal">Estructura de <em>50+ profesionales</em></h2>
+        <div class="two-col" style="margin-top:clamp(0.5rem,1vh,1rem);">
+            <div>
+                <h3 class="reveal">Equipo Corporativo</h3>
+                <div style="display:flex; flex-direction:column; gap:clamp(0.3rem,0.5vh,0.5rem);">
+                    <div class="card reveal" style="padding:clamp(0.4rem,0.8vw,0.8rem);">
+                        <p style="font-size:var(--small-size);"><strong style="font-weight:600;">Q.F. Rodrigo Nieto G.</strong> &mdash; Gerente General</p>
+                        <p style="font-size:clamp(0.5rem,0.65vw,0.6rem); color:var(--gray-mid);">Qu&iacute;mico-Farmac&eacute;utico, Mag&iacute;ster en Administraci&oacute;n de Salud y Bioestad&iacute;stica, U. de Chile</p>
+                    </div>
+                    <div class="card reveal" style="padding:clamp(0.4rem,0.8vw,0.8rem);">
+                        <p style="font-size:var(--small-size);"><strong style="font-weight:600;">Q.F. Lorena Caerols P.</strong> &mdash; Gerente de Servicios Farmac&eacute;uticos</p>
+                        <p style="font-size:clamp(0.5rem,0.65vw,0.6rem); color:var(--gray-mid);">Qu&iacute;mico-Farmac&eacute;utico, U. de Chile</p>
+                    </div>
+                    <div class="card reveal" style="padding:clamp(0.4rem,0.8vw,0.8rem);">
+                        <p style="font-size:var(--small-size);"><strong style="font-weight:600;">Cristi&aacute;n Espinoza</strong> &mdash; Subgerente de Procesos y Sistemas</p>
+                        <p style="font-size:clamp(0.5rem,0.65vw,0.6rem); color:var(--gray-mid);">Ingeniero Civil, U. de Chile</p>
+                    </div>
+                    <div class="card reveal" style="padding:clamp(0.4rem,0.8vw,0.8rem);">
+                        <p style="font-size:var(--small-size);"><strong style="font-weight:600;">Juan Mart&iacute;nez</strong> &mdash; Subgerente de Operaciones</p>
+                        <p style="font-size:clamp(0.5rem,0.65vw,0.6rem); color:var(--gray-mid);">Tecn&oacute;logo M&eacute;dico, U. de Chile</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 class="reveal">Equipo Regional</h3>
+                <div style="display:flex; flex-direction:column; gap:clamp(0.3rem,0.5vh,0.5rem);">
+                    <div class="card reveal" style="padding:clamp(0.4rem,0.8vw,0.8rem); border-left:3px solid var(--red-primary);">
+                        <p style="font-size:var(--small-size);"><strong style="font-weight:600;">Victoria Ventura</strong> &mdash; Coordinadora Argentina</p>
+                        <p style="font-size:clamp(0.5rem,0.65vw,0.6rem); color:var(--gray-mid);">T&eacute;cnica Superior en Enfermer&iacute;a, ISCS Argentina</p>
+                    </div>
+                    <div class="card reveal" style="padding:clamp(0.4rem,0.8vw,0.8rem);">
+                        <p style="font-size:var(--small-size);"><strong style="font-weight:600;">Denisse C&oacute;rdova</strong> &mdash; Jefe Servicios Per&uacute;</p>
+                        <p style="font-size:clamp(0.5rem,0.65vw,0.6rem); color:var(--gray-mid);">Enfermera</p>
+                    </div>
+                    <div class="card reveal" style="padding:clamp(0.4rem,0.8vw,0.8rem);">
+                        <p style="font-size:var(--small-size);"><strong style="font-weight:600;">Diana Maldonado</strong> &mdash; Coordinadora M&eacute;xico</p>
+                        <p style="font-size:clamp(0.5rem,0.65vw,0.6rem); color:var(--gray-mid);">Psic&oacute;loga, UNAM</p>
+                    </div>
+                </div>
+                <div class="reveal" style="margin-top:clamp(0.5rem,1vh,1rem);">
+                    <div class="badge" style="margin-bottom:0.3rem;">Red de m&aacute;s de 120 proveedores en convenio</div>
+                    <div class="badge">Red de enfermeras a domicilio</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="red-line"></div>
+    <div class="slide-footer"><span>&copy; Close-Up International 2026</span><span>23</span></div>
+</section>
+
+
+<!-- =============================================
+     SLIDE 24: CIERRE / CONTACTO
+     ============================================= -->
+<section class="slide cover" data-nav="Contacto">
+    <div class="slide-header" style="padding-top:clamp(1.5rem,3vh,3rem);">
+        <div class="logo-text" style="color:white;">Close-Up <span style="color:rgba(255,255,255,0.6);">International</span></div>
+        <div class="slide-nav" style="color:rgba(255,255,255,0.5);"><span>Argentina 2026</span></div>
+    </div>
+    <div class="slide-content" style="align-items:center; text-align:center;">
+        <h1 class="reveal" style="font-size:var(--title-size); color:white;">Gracias</h1>
+        <p class="reveal" style="color:rgba(255,255,255,0.7); font-size:clamp(0.9rem,1.5vw,1.2rem); max-width:600px; margin-bottom:clamp(1rem,2vh,2rem);">Estamos listos para ser su partner estrat&eacute;gico en inteligencia farmac&eacute;utica.</p>
+        <div class="reveal" style="display:flex; gap:clamp(1rem,3vw,3rem); flex-wrap:wrap; justify-content:center;">
+            <div style="text-align:center;">
+                <p style="font-size:var(--body-size); color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.3rem;">Comercial Argentina</p>
+                <p style="font-size:var(--body-size); color:white; font-weight:600;">Ariel Sindel</p>
+                <p style="font-size:var(--small-size); color:rgba(255,255,255,0.6);">Gerente Marketing y Capacitaciones</p>
+                <p style="font-size:var(--small-size); color:rgba(255,255,255,0.7);">asindel@close-upinternational.com.ar</p>
+            </div>
+        </div>
+    </div>
+    <div style="height:3px; background:rgba(255,255,255,0.1);"></div>
+    <div class="slide-footer" style="color:rgba(255,255,255,0.3);">
+        <span>&copy; Close-Up International 2026 &mdash; Confidencial</span>
+        <span>24</span>
+    </div>
+</section>
+
+
+<!-- ===========================================
+     JAVASCRIPT: Presentation Controller
+     =========================================== -->
+<script>
+class SlidePresentation {
+    constructor() {
+        this.slides = document.querySelectorAll('.slide');
+        this.currentSlide = 0;
+        this.isScrolling = false;
+
+        this.setupIntersectionObserver();
+        this.setupKeyboardNav();
+        this.setupTouchNav();
+        this.setupProgressBar();
+        this.setupNavDots();
+    }
+
+    /* Intersection Observer: triggers .visible for animations */
+    setupIntersectionObserver() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    const idx = Array.from(this.slides).indexOf(entry.target);
+                    if (idx !== -1) {
+                        this.currentSlide = idx;
+                        this.updateProgressBar();
+                        this.updateNavDots();
+                    }
+                }
+            });
+        }, { threshold: 0.4 });
+
+        this.slides.forEach(slide => observer.observe(slide));
+    }
+
+    /* Keyboard: arrows, space, page up/down */
+    setupKeyboardNav() {
+        document.addEventListener('keydown', (e) => {
+            if (['ArrowDown', 'ArrowRight', 'Space', 'PageDown'].includes(e.code)) {
+                e.preventDefault();
+                this.goToSlide(this.currentSlide + 1);
+            } else if (['ArrowUp', 'ArrowLeft', 'PageUp'].includes(e.code)) {
+                e.preventDefault();
+                this.goToSlide(this.currentSlide - 1);
+            } else if (e.code === 'Home') {
+                e.preventDefault();
+                this.goToSlide(0);
+            } else if (e.code === 'End') {
+                e.preventDefault();
+                this.goToSlide(this.slides.length - 1);
+            }
+        });
+    }
+
+    /* Touch/swipe support */
+    setupTouchNav() {
+        let startY = 0;
+        document.addEventListener('touchstart', (e) => { startY = e.touches[0].clientY; }, { passive: true });
+        document.addEventListener('touchend', (e) => {
+            const diff = startY - e.changedTouches[0].clientY;
+            if (Math.abs(diff) > 50) {
+                diff > 0 ? this.goToSlide(this.currentSlide + 1) : this.goToSlide(this.currentSlide - 1);
+            }
+        }, { passive: true });
+    }
+
+    /* Progress bar */
+    setupProgressBar() {
+        this.progressBar = document.getElementById('progressBar');
+        this.updateProgressBar();
+        document.addEventListener('scroll', () => this.updateProgressBar());
+    }
+
+    updateProgressBar() {
+        const pct = ((this.currentSlide + 1) / this.slides.length) * 100;
+        if (this.progressBar) this.progressBar.style.width = pct + '%';
+    }
+
+    /* Nav dots */
+    setupNavDots() {
+        this.dotsContainer = document.getElementById('navDots');
+        if (!this.dotsContainer) return;
+        this.dotsContainer.innerHTML = '';
+        this.slides.forEach((slide, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+            dot.title = slide.dataset.nav || `Slide ${i + 1}`;
+            dot.addEventListener('click', () => this.goToSlide(i));
+            this.dotsContainer.appendChild(dot);
+        });
+    }
+
+    updateNavDots() {
+        if (!this.dotsContainer) return;
+        this.dotsContainer.querySelectorAll('.nav-dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === this.currentSlide);
+        });
+    }
+
+    goToSlide(index) {
+        if (index < 0 || index >= this.slides.length) return;
+        this.currentSlide = index;
+        this.slides[index].scrollIntoView({ behavior: 'smooth' });
+        this.updateProgressBar();
+        this.updateNavDots();
+    }
+}
+
+/* Initialize when DOM is ready */
+document.addEventListener('DOMContentLoaded', () => new SlidePresentation());
+</script>
+
+</body>
+</html>
